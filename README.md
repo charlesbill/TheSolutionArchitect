@@ -8,6 +8,7 @@ Here is the steps and command lines (CLI) on Visual Studio Code terminal:
     public class Product
     {
         [Key]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdProduct { get; set; }
 
