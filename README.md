@@ -6,9 +6,9 @@ Here is the steps and command lines (CLI) on Visual Studio Code terminal:
 2) Create the Model class, called Product in Models folder.
 
     public class Product
-    {
-        [Key]
+   {
         
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdProduct { get; set; }
 
