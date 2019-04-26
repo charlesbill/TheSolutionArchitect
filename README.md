@@ -56,7 +56,14 @@ Here is the steps and command lines (CLI) on Visual Studio Code terminal:
   dotnet ef migrations add InitialCreate --context MvcWebAppDbContext
   dotnet ef database update
   
-6) To create the Controllers and Views using the aspnet code genration tool, enter the following commands
+6) Add the following to your csproj file
+
+   <ItemGroup>  
+      <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />  
+      <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />   
+   </ItemGroup> 
+
+7) To create the Controllers and Views using the aspnet code genration tool, enter the following commands
 
   dotnet tool install -g dotnet-aspnet-codegenerator
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -64,14 +71,14 @@ Here is the steps and command lines (CLI) on Visual Studio Code terminal:
   
   dotnet aspnet-codegenerator controller -name ProductsController -m Product -dc MvcWebAppDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
 
-7) Build and run
+8) Build and run
 
   dotnet restore
   dotnet build
   
-8) In Visual Studio Code, go to Debug and click run 
+9) In Visual Studio Code, go to Debug and click run 
 
-9) Remember, at this stage the new views are not added to your project. When the web application open in the URL, 
+10) Remember, at this stage the new views are not added to your project. When the web application open in the URL, 
    change the URL to the following URL: localhost:5000/Products/Index
    
    
