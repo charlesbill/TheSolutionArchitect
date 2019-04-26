@@ -1,5 +1,4 @@
-# TheSolutionArchitect
-This is where I will upload my source code discussed in my YouTube Channel The Solution Architect
+# ASP.Net Core MVC Web Application using SQLite and Entity Framework Core
 
 Here is the steps and command lines (CLI) on Visual Studio Code terminal: 
 1) Ensure the SQLite package are included:
