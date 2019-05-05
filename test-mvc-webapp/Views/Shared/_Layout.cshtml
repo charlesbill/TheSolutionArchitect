@@ -27,7 +27,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -37,6 +36,18 @@
                         </li>
                     </ul>
                 </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            style="background-color:white;color:black;border:none !important;outline:none !important">
+                        Products
+                    </button>
+                    <div class="dropdown-menu">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">List Products</a>
+                        </li>
+                    </div>
+                </div>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
     </header>
