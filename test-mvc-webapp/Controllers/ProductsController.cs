@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using test_mvc_webapp.Data;
 using test_mvc_webapp.Models;
 
@@ -15,10 +19,13 @@ namespace test_mvc_webapp.Controllers
     public class ProductsController : Controller
     {
         private readonly MvcWebAppDbContext _context;
-
-        public ProductsController(MvcWebAppDbContext context)
+        private readonly IFileProvider fileProvider;
+        private readonly IHostingEnvironment hostingEnvironment;
+        public ProductsController(MvcWebAppDbContext context, IFileProvider fileprovider, IHostingEnvironment env)
         {
             _context = context;
+            fileProvider = fileprovider;
+            hostingEnvironment = env;
         }
 
 
@@ -26,6 +33,7 @@ namespace test_mvc_webapp.Controllers
         
         public async Task<IActionResult> Index()
         {
+            ViewData["MainPath"] = Directory.GetCurrentDirectory();
             return View(await _context.Products.ToListAsync());
         }
 
@@ -58,12 +66,28 @@ namespace test_mvc_webapp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProduct,ProductCode,ProductType,Description,UnitPrice,QtyInStock")] Product product)
+        public async Task<IActionResult> Create([Bind("IdProduct,ProductCode,ProductType,Description,UnitPrice,QtyInStock")] Product product, IFormFile file)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                // Code to upload image
+                if (file != null || file.Length != 0)
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    var newFilename = product.IdProduct + "_" + String.Format("{0:d}", (DateTime.Now.Ticks / 10) % 100000000) + fi.Extension;
+                    var webPath = hostingEnvironment.WebRootPath;
+                    var path = Path.Combine("" , webPath + @"\ImageFiles\" + newFilename);
+                    var pathToSave = @"/ImageFiles/" + newFilename;
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    product.ImagePath = pathToSave;
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(product);

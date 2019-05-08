@@ -9,9 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" enctype="multipart/form-data">
     <thead>
         <tr>
+            <th>
+                Image
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductCode)
             </th>
@@ -34,6 +37,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <img class="img-thumbnail" src="@item.ImagePath" asp-append-version="true" alt="@item.ImagePath" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ProductCode)
             </td>
             <td>
@@ -48,6 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.QtyInStock)
             </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdProduct">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdProduct">Details</a> |

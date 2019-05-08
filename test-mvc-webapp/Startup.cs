@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace test_mvc_webapp
 {
@@ -49,6 +51,10 @@ namespace test_mvc_webapp
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSingleton<IFileProvider>(
+                    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
+                    );
+
             services.AddMvc(obj =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -76,10 +82,10 @@ namespace test_mvc_webapp
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
+            
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {

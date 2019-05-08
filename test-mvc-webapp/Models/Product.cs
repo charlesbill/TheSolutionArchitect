@@ -33,6 +33,9 @@ namespace test_mvc_webapp.Models
         [Display(Name = "Quantity in Stock")]
         [Required(ErrorMessage = "{0} Is required.")]
         public int QtyInStock { get; set; }
+
+        [Display(Name = "Select the Image")]
+        public string ImagePath { get; set; }
     }
 
 }

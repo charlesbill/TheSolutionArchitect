@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-controller="Products" asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductCode" class="control-label"></label>
@@ -36,6 +36,12 @@
                 <label asp-for="QtyInStock" class="control-label"></label>
                 <input asp-for="QtyInStock" class="form-control" />
                 <span asp-validation-for="QtyInStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Upload a Image</p>
+                    <input type="file" name="file" />
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
