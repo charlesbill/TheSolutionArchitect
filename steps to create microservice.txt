@@ -1,0 +1,11 @@
+Install Docker Desktop
+https://docs.docker.com/docker-for-windows/install/ 
+
+dotnet new webapi -o micro-product-api 
+
+create DbContext for SQLite
+
+dotnet ef migrations add InitialCreate --context ProductDbContext
+
+dotnet ef database update
+
