@@ -1,0 +1,49 @@
+@model mylatemvc.Models.Major
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    IEnumerable<Student> students = ViewData["Students"] as IEnumerable<Student>;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Major</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MajorTitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MajorTitle)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MajorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<p><b>Student List</b></p>  
+<table>  
+    <tr>  
+        <th>Name</th>  
+        <th>Surname</th>  
+    </tr>  
+    @foreach (Student student in students)  
+    {  
+        <tr>  
+            <td>@student.StudentName</td>  
+            <td>@student.Surname</td>  
+        </tr>  
+    }  
+</table>  
+</body>
+</html>
