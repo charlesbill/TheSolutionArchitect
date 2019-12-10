@@ -1,0 +1,14 @@
+F:\TheSolutionArchitect\Projects\myapi1\bin\Debug\netcoreapp2.2\myapi1.deps.json
+F:\TheSolutionArchitect\Projects\myapi1\bin\Debug\netcoreapp2.2\myapi1.runtimeconfig.json
+F:\TheSolutionArchitect\Projects\myapi1\bin\Debug\netcoreapp2.2\myapi1.runtimeconfig.dev.json
+f:\TheSolutionArchitect\Projects\myapi1\bin\Debug\netcoreapp2.2\myapi1.dll
+f:\TheSolutionArchitect\Projects\myapi1\bin\Debug\netcoreapp2.2\myapi1.pdb
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.csprojAssemblyReference.cache
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.csproj.CoreCompileInputs.cache
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.RazorAssemblyInfo.cache
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.RazorAssemblyInfo.cs
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.AssemblyInfoInputs.cache
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.AssemblyInfo.cs
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.RazorTargetAssemblyInfo.cache
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.dll
+f:\TheSolutionArchitect\Projects\myapi1\obj\Debug\netcoreapp2.2\myapi1.pdb
